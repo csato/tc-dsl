@@ -48,4 +48,10 @@ project {
 
 object Test : Project({
     name = "Test"
+
+    buildType(Test_BuildConf)
+})
+
+object Test_BuildConf : BuildType({
+    name = "build conf"
 })
