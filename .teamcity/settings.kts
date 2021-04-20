@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.buildReportTab
 
 /*
@@ -54,4 +55,14 @@ object Test : Project({
 
 object Test_BuildConf : BuildType({
     name = "build conf"
+
+    steps {
+        script {
+            name = "comando"
+            scriptContent = """
+                #!/bon/bash
+                echo "tests"
+            """.trimIndent()
+        }
+    }
 })
