@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.buildReportTab
 
 /*
@@ -41,4 +42,27 @@ project {
             preventDependencyCleanup = false
         }
     }
+
+    subProject(Test)
 }
+
+
+object Test : Project({
+    name = "Test"
+
+    buildType(Test_BuildConf)
+})
+
+object Test_BuildConf : BuildType({
+    name = "build conf"
+
+    steps {
+        script {
+            name = "comando"
+            scriptContent = """
+                #!/bin/bash
+                echo "tests"
+            """.trimIndent()
+        }
+    }
+})
