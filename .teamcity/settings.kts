@@ -60,7 +60,7 @@ object Test_BuildConf : BuildType({
         script {
             name = "comando"
             scriptContent = """
-                #!/bon/bash
+                #!/bin/bash
                 echo "tests"
             """.trimIndent()
         }
